@@ -1,0 +1,12 @@
+body{
+   background-color: #508bfc;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+label{
+    --p-floatlabel-focus-color:#0080FF;
+    --p-floatlabel-invalid-color:rgb(250, 92, 92);
+    
+}
+input{
+    --p-inputtext-focus-border-color:#0080FF;
+}

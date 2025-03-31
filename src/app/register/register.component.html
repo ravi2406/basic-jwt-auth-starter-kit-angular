@@ -1,0 +1,99 @@
+<p-toast></p-toast>
+<p-card [style]="{width:'35rem',overflow: 'hidden', padding: '8px 8px', margin:'1rem 1rem'}" id="container">
+  <div>
+    <h1>SIGN UP</h1>
+  </div>
+  <div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div>
+        <p-floatlabel variant="on">
+          <input pInputText id="firstName" type="text" formControlName="firstName" autocomplete="off"/>
+          <label for="firstName">First Name</label>
+        </p-floatlabel>
+        <div *ngIf="registerForm.get('firstName')?.hasError('required') && registerForm.get('firstName')?.touched"
+          class="erromsg">
+          First Name is required.
+        </div>
+        <div *ngIf="registerForm.get('firstName')?.hasError('minlength') && registerForm.get('firstName')?.touched"
+          class="erromsg">
+          min 3 characters required
+        </div>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <input pInputText id="lastName" type="text" formControlName="lastName" />
+          <label for="lastName">Last Name</label>
+        </p-floatlabel>
+        <div *ngIf="registerForm.get('lastName')?.hasError('required') && registerForm.get('lastName')?.touched"
+          class="erromsg">
+          Last Name is required.
+        </div>
+        <div *ngIf="registerForm.get('lastName')?.hasError('minlength') && registerForm.get('lastName')?.touched"
+          class="erromsg">
+          min 3 characters required
+        </div>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <input pInputText id="username" type="text" formControlName="username" />
+          <label for="username">UserName</label>
+        </p-floatlabel>
+        <div *ngIf="registerForm.get('username')?.hasError('required') && registerForm.get('username')?.touched"
+          class="erromsg">
+          User Name is required.
+        </div>
+        <div *ngIf="registerForm.get('username')?.hasError('minlength') && registerForm.get('username')?.touched"
+          class="erromsg">
+          min 3 characters required
+        </div>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <input pInputText id="email" type="text" formControlName="email" />
+          <label for="email">Email</label>
+        </p-floatlabel>
+        <div *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched"
+          class="erromsg">
+          Email is required.
+        </div>
+        <div *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched" class="erromsg">
+          Please enter a valid Email
+        </div>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <input pInputText id="password" type="password" formControlName="password" pTooltip="password must contain atleast 8 character atleast 1 uppercase, 1 lowercase, 1 number, 1 special case character" tooltipPosition="right" tooltipEvent="focus"/>
+          <label for="password">Password</label>
+        </p-floatlabel>
+        <div *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched"
+          class="erromsg">
+          password is required.
+        </div>
+        <div *ngIf="registerForm.get('password')?.hasError('pattern') && registerForm.get('password')?.touched"
+          class="erromsg">
+          please enter valid password
+        </div>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <input pInputText id="repeatPassword" type="password" formControlName="repeatPassword" />
+          <label for="repeatPassword">Repeat Password</label>
+        </p-floatlabel>
+        <div
+          *ngIf="registerForm.get('repeatPassword')?.hasError('required') && !registerForm.get('password')?.errors && registerForm.get('repeatPassword')?.touched"
+          class="erromsg">
+          please re enter your password
+        </div>
+      </div>
+      <br>
+      <div>
+        <p-button label="SIGN UP" [raised]="true" type="submit" [disabled]="registerForm.invalid"
+          [style]="{'width': '100%', 'backgroundColor':'#0080FF', 'fontWeight':'bolder', 'color':'white', 'border':'1px solid #0080FF'}" />
+      </div>
+      <div>
+        <p-button label="SIGN UP WITH GOOGLE" icon="pi pi-google" [raised]="true"
+          [style]="{'width': '100%', 'backgroundColor':'#dd4b39', 'fontWeight':'bolder', 'color':'white', 'border':'1px solid #dd4b39'}" />
+      </div>
+    </form>
+  </div>
+</p-card>
