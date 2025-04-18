@@ -1,0 +1,45 @@
+<p-toast></p-toast>
+<p-card
+  [style]="{width:'28rem',overflow: 'hidden', padding: '8px 8px', margin:'1rem 1rem'}"
+  id="container">
+  <div>
+    <h1>LOGIN</h1>
+  </div>
+  <div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div>
+        <p-floatlabel variant="on">
+          <input pInputText id="userName" type="text" formControlName="userName" />
+          <label for="userName">User Name</label>
+        </p-floatlabel>
+        <div *ngIf="loginForm.get('userName')?.hasError('required') && loginForm.get('userName')?.touched" class="erromsg">
+          username is required.
+        </div>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <p-password formControlName="password" [feedback]="false" [toggleMask]="true" class="passwordInput"
+            [inputStyle]="{'width': '100%','height': '45px'}" [style]="{'width': '100%'}" />
+          <!-- <input pInputText id="password" type="password" formControlName="password"/> -->
+          <label for="password">Password</label>
+        </p-floatlabel>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="erromsg">
+          Password is required.
+        </div>
+      </div>
+      <div>
+        <p-button label="LOGIN" [raised]="true" type="submit" [disabled]="loginForm.invalid"
+          [style]="{'width': '100%', 'backgroundColor':'#0080FF', 'fontWeight':'bolder', 'color':'white', 'border':'1px solid #0080FF'}" />
+      </div>
+      <div>
+        <p><a href="">Forgot Password ?</a></p>
+      </div>
+      <div>
+        <p-button label="SIGN IN WITH GOOGLE" icon="pi pi-google" [raised]="true"  [style]="{'width': '100%', 'backgroundColor':'#dd4b39', 'fontWeight':'bolder', 'color':'white', 'border':'1px solid #dd4b39'}"/>
+      </div>
+      <div>
+        <p>Don't have an account? <a routerLink="/signup"><strong>Register here</strong></a></p>
+      </div>
+    </form>
+  </div>
+</p-card>
